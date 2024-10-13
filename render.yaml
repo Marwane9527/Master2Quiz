@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: Master2Quiz # Nom de ton service
+    env: php # Environnement d'exécution
+    plan: free # Type de plan (peut être free ou un plan payant)
+    buildCommand: "" # Commande de construction (laisser vide si tu n'utilises pas Composer)
+    startCommand: "php -S 0.0.0.0:10000 -t public" # Commande pour démarrer ton serveur PHP
