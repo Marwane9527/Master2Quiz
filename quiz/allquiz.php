@@ -72,28 +72,30 @@ $quizzes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </svg>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="profil/profil.php">Profil</a></li>
-                                <?php if ($user_data['id'] == 1): ?>
+                                <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
+                                <?php if ($user_data['id'] == 4): ?>
                                     <li>
-                                        <a class="dropdown-item" href="admin/panel.php">Panel</a>
+                                        <a class="dropdown-item" href="../admin/panel.php">Panel</a>
                                     </li>
                                 <?php endif; ?>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="connexion/deconnexionv2.php">Se déconnecter</a></li>
+                                <li><a class="dropdown-item" href="../connexion/deconnexionv2.php">Se déconnecter</a></li>
                             </ul>
                         </div>
 
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="connexion/connexion.php">Connexion</a>
+                            <a class="nav-link" href="../connexion/connexion.php">Connexion</a>
                         </li>
                     <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
+
+
 
 
 

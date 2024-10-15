@@ -31,7 +31,7 @@ if (isset($_POST['connexion'])) {
                         $_SESSION['nom'] = $user_data['username'];
 
                         // Redirection basée sur l'ID de l'utilisateur
-                        if ($user_data['id'] == 1) {
+                        if ($user_data['id'] == 4) {
                             // Rediriger l'utilisateur avec l'ID 2 vers la page admin
                             header('location: ../admin/panel.php');
                         } else {
@@ -57,12 +57,12 @@ if (isset($_POST['connexion'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterQuizz</title>
+    <title>Master2Quiz | Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>

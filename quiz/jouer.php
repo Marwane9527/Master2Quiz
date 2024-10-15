@@ -70,7 +70,7 @@ try {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Master2Quiz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -89,7 +89,7 @@ try {
                 <ul class="navbar-nav ms-auto ">
                     <?php if (isset($_SESSION['id'])): ?>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                            <button type="button" class="btn btn-danger dropdown-toggle " data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -100,7 +100,7 @@ try {
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
-                                <?php if ($user_data['id'] == 1): ?>
+                                <?php if ($user_data['id'] == 4): ?>
                                     <li>
                                         <a class="dropdown-item" href="../admin/panel.php">Panel</a>
                                     </li>

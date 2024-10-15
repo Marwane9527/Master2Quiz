@@ -2,6 +2,14 @@
 session_start();
 
 include_once 'base/base.php';
+
+if (!isset($_SESSION['user_data']) || $_SESSION['user_data']['id'] !== 4) {
+    // Si l'utilisateur n'est pas connecté ou s'il n'a pas l'ID 4, on le redirige vers la page de connexion
+    header('Location: connexion/connexion.php');
+    exit();
+}
+
+
 ?>
 
 <!DOCTYPE html>

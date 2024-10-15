@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -75,9 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
-            <a class="navbar-brand" href="../index.php"></a>
+            <a class="navbar-brand" href="../index.php">Master2Quiz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -88,13 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link" href="../index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allquiz.php">Quiz</a>
+                        <a class="nav-link" href="../quiz/allquiz.php">Quiz</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto ">
                     <?php if (isset($_SESSION['id'])): ?>
                         <div class="btn-group">
-                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                            <button type="button" class="btn btn-danger dropdown-toggle " data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -104,27 +104,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </svg>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
-                                <?php if ($_SESSION['role'] === 'gestionnaire' || $_SESSION['role'] === 'super-administrateur'): ?>
+                                <li><a class="dropdown-item" href="profil.php">Profil</a></li>
+                                <?php if ($user_data['id'] == 4): ?>
                                     <li>
-                                        <a class="dropdown-item" href="#">Panel</a>
+                                        <a class="dropdown-item" href="../admin/panel.php">Panel</a>
                                     </li>
                                 <?php endif; ?>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../connexion/deconnexion.php">Se déconnecter</a></li>
+                                <li><a class="dropdown-item" href="../connexion/deconnexionv2.php">Se déconnecter</a></li>
                             </ul>
                         </div>
+
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="connexion/connexion.php">Connexion</a>
+                            <a class="nav-link" href="../connexion/connexion.php">Connexion</a>
                         </li>
                     <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <div class="container mt-5">
         <h2>Modifier votre profil</h2>

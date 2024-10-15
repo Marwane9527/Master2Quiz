@@ -1,6 +1,6 @@
 -- Table des utilisateurs (users)
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,  -- Hachage du mot de passe (par exemple bcrypt)
@@ -11,7 +11,7 @@ CREATE TABLE users (
 
 -- Table des quiz (quizzes)
 CREATE TABLE quizzes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,                 -- Référence à l'utilisateur qui a créé le quiz
     title VARCHAR(255) NOT NULL,          -- Titre du quiz
     description TEXT,                     -- Brève description du quiz
@@ -19,10 +19,9 @@ CREATE TABLE quizzes (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE  -- Clé étrangère vers la table users
 );
 
-
 -- Table des questions (questions)
 CREATE TABLE questions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     quiz_id INT NOT NULL,          -- Lien avec le quiz correspondant
     question_text TEXT NOT NULL,   -- Texte de la question
     FOREIGN KEY (quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
@@ -30,7 +29,7 @@ CREATE TABLE questions (
 
 -- Table des réponses (answers)
 CREATE TABLE answers (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     question_id INT NOT NULL,        -- Lien avec la question correspondante
     answer_text VARCHAR(255) NOT NULL, -- Texte de la réponse
     is_correct BOOLEAN DEFAULT FALSE,  -- Indique si la réponse est correcte
@@ -39,7 +38,7 @@ CREATE TABLE answers (
 
 -- Table des résultats (results)
 CREATE TABLE results (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,            -- Lien avec l'utilisateur
     quiz_id INT NOT NULL,            -- Lien avec le quiz
     score INT NOT NULL,              -- Score obtenu par l'utilisateur
@@ -50,7 +49,7 @@ CREATE TABLE results (
 
 -- Table de suivi des réponses utilisateur (user_answers)
 CREATE TABLE user_answers (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     result_id INT NOT NULL,          -- Lien avec le résultat (tentative)
     question_id INT NOT NULL,        -- Lien avec la question
     answer_id INT NOT NULL,          -- Lien avec la réponse choisie

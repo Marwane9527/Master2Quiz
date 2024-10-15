@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Master2Quiz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
-                                <?php if ($user_data['id'] == 1): ?>
+                                <?php if ($user_data['id'] == 4): ?>
                                     <li>
                                         <a class="dropdown-item" href="../admin/panel.php">Panel</a>
                                     </li>

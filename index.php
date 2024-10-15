@@ -59,7 +59,7 @@ if (isset($_SESSION['id'])) {
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="profil/profil.php">Profil</a></li>
-                                <?php if ($user_data['id'] == 1): ?>
+                                <?php if ($user_data['id'] == 4): ?>
                                     <li>
                                         <a class="dropdown-item" href="admin/panel.php">Panel</a>
                                     </li>
