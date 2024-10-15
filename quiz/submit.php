@@ -13,6 +13,13 @@ if (isset($_SESSION['id'])) {
     $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+
+if (!isset($_SESSION['id'])) {
+    // Rediriger vers la page notresult.php si aucun utilisateur n'est connecté
+    header('Location: notresult.php');
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $quiz_id = isset($_POST['quiz_id']) ? (int) $_POST['quiz_id'] : 0;
     $user_id = $_SESSION['id']; // Assurez-vous que l'utilisateur est connecté
