@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Génération du code de vérification à 6 chiffres
     $verification_code = random_int(100000, 999999);
 
-    $sql = "INSERT INTO users (username, email, password, verification_code, created_at, role) 
-            VALUES (:username, :email, :password, :verification_code, :created_at, :role)";
+    $sql = "INSERT INTO users (username, email, password, verification_code, created_at) 
+            VALUES (:username, :email, :password, :verification_code, :created_at)";
     $stmt = $pdo->prepare($sql);
 
     try {
@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':password' => $hashed_password,
             ':verification_code' => $verification_code,
             ':created_at' => $created_at,
-            ':role' => $role  // Inclure le rôle dans la requête
         ]);
 
         // Envoi de l'e-mail de vérification
