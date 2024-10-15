@@ -84,7 +84,7 @@ if (isset($_SESSION['id'])) {
     <!-- Section principale -->
     <header class="bg-danger text-white text-center py-5">
         <div class="container">
-            <h1 class="display-4">Bienvenue sur Master2Quiz !</h1>
+            <h1 class="display-4">Bienvenue sur Master2Quiz ! TEST</h1>
             <p class="lead">Testez vos connaissances avec nos quiz sur divers sujets.</p>
             <p class="lead">Ou alors créez vos propres quiz !</p>
             <a href="quiz/creer.php" class="btn btn-lg btn-dark">Créer un Quiz</a>

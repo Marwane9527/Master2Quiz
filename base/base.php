@@ -1,5 +1,5 @@
 <?php
-$host = 'dpg-cs744tggph6c73fdgnb0-a';
+$host = 'dpg-cs744tggph6c73fdgnb0-a.frankfurt-postgres.render.com';
 $dbname = 'quiz_a7sk';
 $username = 'quiz_a7sk_user';
 $password = '2e9oK7D491cQOly9HyyRuIGVdtxvWd6T';
