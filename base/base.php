@@ -6,8 +6,8 @@ $password = '2e9oK7D491cQOly9HyyRuIGVdtxvWd6T';
 $port = '5432'; // Port pour PostgreSQL
 
 try {
-    // Correction du DSN pour PostgreSQL
-    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;charset=utf8"; // Utiliser 'pgsql' pour PostgreSQL
+    // Correction du DSN pour PostgreSQL sans charset
+    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname"; // Enlever charset
 
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Gérer les erreurs
