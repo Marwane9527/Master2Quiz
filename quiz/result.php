@@ -14,6 +14,12 @@ if ($result_id <= 0) {
     exit;
 }
 
+if (!isset($_SESSION['id'])) {
+    // Rediriger vers la page notresult.php si aucun utilisateur n'est connecté
+    header('Location: notresult.php');
+    exit;
+}
+
 if (isset($_SESSION['id'])) {
     // Requête pour obtenir les données de l'utilisateur
     $stmt = $pdo->prepare("SELECT id FROM users WHERE id = :id");
