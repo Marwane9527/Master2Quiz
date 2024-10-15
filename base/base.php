@@ -1,6 +1,6 @@
 <?php
 $host = 'dpg-cs744tggph6c73fdgnb0-a';
-$dbname = 'Master2quiz';
+$dbname = 'quiz_a7sk';
 $username = 'quiz_a7sk_user';
 $password = '2e9oK7D491cQOly9HyyRuIGVdtxvWd6T';
 $port = '5432'; // Ajout d'un point-virgule manquant
