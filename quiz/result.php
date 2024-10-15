@@ -14,6 +14,13 @@ if ($result_id <= 0) {
     exit;
 }
 
+if (isset($_SESSION['id'])) {
+    // Requête pour obtenir les données de l'utilisateur
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE id = :id");
+    $stmt->execute(['id' => $_SESSION['id']]);
+    $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 // Récupérer les informations du résultat
 try {
     // Récupérer le score et les détails du quiz

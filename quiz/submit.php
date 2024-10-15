@@ -6,8 +6,15 @@ error_reporting(E_ALL);
 
 include_once "../base/base.php";
 
+if (isset($_SESSION['id'])) {
+    // Requête pour obtenir les données de l'utilisateur
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE id = :id");
+    $stmt->execute(['id' => $_SESSION['id']]);
+    $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $quiz_id = isset($_POST['quiz_id']) ? (int)$_POST['quiz_id'] : 0;
+    $quiz_id = isset($_POST['quiz_id']) ? (int) $_POST['quiz_id'] : 0;
     $user_id = $_SESSION['id']; // Assurez-vous que l'utilisateur est connecté
 
     if ($quiz_id <= 0 || !isset($user_id)) {
@@ -30,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Parcourir les réponses de l'utilisateur
         foreach ($_POST as $key => $value) {
             if (strpos($key, 'question_') === 0) {
-                $question_id = (int)str_replace('question_', '', $key);
-                $answer_id = (int)$value;
+                $question_id = (int) str_replace('question_', '', $key);
+                $answer_id = (int) $value;
 
                 // Vérifie si la réponse est correcte
                 $stmt_correct_answer = $pdo->prepare("

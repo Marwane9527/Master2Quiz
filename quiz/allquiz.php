@@ -5,6 +5,13 @@ include_once "../base/base.php";
 // Vérifier s'il y a une recherche effectuée
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
+if (isset($_SESSION['id'])) {
+    // Requête pour obtenir les données de l'utilisateur
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE id = :id");
+    $stmt->execute(['id' => $_SESSION['id']]);
+    $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 // Préparer la requête SQL avec ou sans recherche
 if (!empty($search)) {
     // Requête avec un filtre de recherche sur le titre du quiz et jointure avec la table users

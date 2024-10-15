@@ -9,8 +9,6 @@ if (isset($_SESSION['id'])) {
     $stmt = $pdo->prepare("SELECT id FROM users WHERE id = :id");
     $stmt->execute(['id' => $_SESSION['id']]);
     $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
 }
 
 ?>

@@ -14,6 +14,13 @@ if (!isset($_SESSION['id'])) {
 
 include_once '../base/base.php';
 
+if (isset($_SESSION['id'])) {
+    // Requête pour obtenir les données de l'utilisateur
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE id = :id");
+    $stmt->execute(['id' => $_SESSION['id']]);
+    $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 // Vérification si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Étape 1 : Création du quiz
@@ -73,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Master2Quiz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

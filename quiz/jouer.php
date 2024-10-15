@@ -14,6 +14,13 @@ if ($quiz_id <= 0) {
     exit;
 }
 
+if (isset($_SESSION['id'])) {
+    // Requête pour obtenir les données de l'utilisateur
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE id = :id");
+    $stmt->execute(['id' => $_SESSION['id']]);
+    $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 // Récupérer le quiz et ses questions avec leurs réponses
 try {
     // Récupérer les informations du quiz
@@ -70,7 +77,7 @@ try {
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Master2Quiz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
