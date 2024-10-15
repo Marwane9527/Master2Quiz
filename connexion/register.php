@@ -6,9 +6,9 @@ require '../sendemail/phpmailer/src/Exception.php';
 require '../sendemail/phpmailer/src/PHPMailer.php';
 require '../sendemail/phpmailer/src/SMTP.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// Désactiver l'affichage des erreurs pour éviter les avertissements
+ini_set('display_errors', 0);
+error_reporting(0);
 
 include_once '../base/base.php';
 
@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirmPassword'];
-    $role = $_POST['role'];  // Supposant qu'il y a un rôle si nécessaire (si non, retire cette ligne)
     $created_at = date('Y-m-d H:i:s');
 
     if ($password !== $confirm_password) {
@@ -31,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Génération du code de vérification à 6 chiffres
     $verification_code = random_int(100000, 999999);
 
-    $sql = "INSERT INTO users (username, email, password, verification_code, created_at) 
-            VALUES (:username, :email, :password, :verification_code, :created_at)";
+    $sql = "INSERT INTO users (username, email, password, verification_code, created_at, role) 
+            VALUES (:username, :email, :password, :verification_code, :created_at, :role)";
     $stmt = $pdo->prepare($sql);
 
     try {
@@ -42,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':email' => $email,
             ':password' => $hashed_password,
             ':verification_code' => $verification_code,
-            ':created_at' => $created_at
+            ':created_at' => $created_at,
+            ':role' => $role  // Inclure le rôle dans la requête
         ]);
 
         // Envoi de l'e-mail de vérification
@@ -75,3 +75,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "Méthode de requête non autorisée.";
 }
+?>
