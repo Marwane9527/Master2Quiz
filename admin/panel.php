@@ -3,12 +3,12 @@ session_start();
 
 include_once '../base/base.php';
 
+// Vérifier si l'utilisateur est connecté et s'il a l'ID 4
 if (!isset($_SESSION['user_data']) || $_SESSION['user_data']['id'] !== 4) {
     // Si l'utilisateur n'est pas connecté ou s'il n'a pas l'ID 4, on le redirige vers la page de connexion
-    header('Location: connexion/connexion.php');
+    header('Location: ../connexion/connexion.php');
     exit();
 }
-
 
 ?>
 
@@ -72,7 +72,6 @@ if (!isset($_SESSION['user_data']) || $_SESSION['user_data']['id'] !== 4) {
                 <a href="profil/profil.php" class="btn btn-primary">Consulter</a>
             </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
