@@ -3,21 +3,22 @@ $host = 'dpg-cs744tggph6c73fdgnb0-a';
 $dbname = 'quiz_a7sk';
 $username = 'quiz_a7sk_user';
 $password = '2e9oK7D491cQOly9HyyRuIGVdtxvWd6T';
-$port = '5432'; // Ajout d'un point-virgule manquant
+$port = '5432'; // Port pour PostgreSQL
 
 try {
     // Correction du DSN pour PostgreSQL
-    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;charset=utf8"; // Utiliser 'pgsql' au lieu de 'mysql'
+    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;charset=utf8"; // Utiliser 'pgsql' pour PostgreSQL
 
     $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Gérer les erreurs
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Mode de récupération par défaut
+        PDO::ATTR_EMULATE_PREPARES => false, // Émuler les préparations pour éviter les attaques par injection SQL
     ];
 
     // Établir la connexion à la base de données
     $pdo = new PDO($dsn, $username, $password, $options);
+    echo "Connexion réussie !"; // Message de succès
 } catch (PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+    echo "Erreur de connexion : " . $e->getMessage(); // Afficher le message d'erreur
 }
 ?>
