@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_data']) || $_SESSION['user_data']['id'] !== 4) {
-    // Si l'utilisateur n'est pas connecté ou s'il n'a pas l'ID 4, on le redirige vers la page de connexion
-    header('Location: ../../connexion/connexion.php');
-    exit();
+if ($user_data['id'] !== 4) {
+    // Rediriger l'utilisateur avec l'ID 2 vers la page admin
+    header('location: ../../connexion/connexion.php');
 }
-
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
